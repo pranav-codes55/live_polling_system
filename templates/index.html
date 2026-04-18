@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Polling and Voting System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="backdrop"></div>
+  <main class="page">
+    <header class="title-card animate-in">
+      <h1>Live Polling and Voting System</h1>
+    </header>
+
+    <section class="layout">
+      <aside class="panel left-panel animate-in delay-1">
+        <h2>Login</h2>
+        <input id="username" type="text" placeholder="Username">
+        <input id="password" type="password" placeholder="Password">
+        <button id="login-btn" class="btn primary">Login</button>
+
+        <ol class="instructions">
+          <li>Login with your assigned username.</li>
+          <li>Select one vote option only.</li>
+          <li>Wait for accepted/duplicate status.</li>
+          <li>Watch the live results update.</li>
+        </ol>
+
+        <p id="login-state" class="status-text"></p>
+        <p class="hint-text">Credentials are loaded from users.json (example users included in project root).</p>
+        <p class="poll-id">Poll ID: <strong>{{ poll_id }}</strong></p>
+      </aside>
+
+      <section class="panel right-panel animate-in delay-2">
+        <h2>Live Results</h2>
+
+        <div class="option-cards">
+          <article class="option-card option-a">
+            <p>Option A</p>
+            <strong id="count-a">0</strong>
+          </article>
+          <article class="option-card option-b">
+            <p>Option B</p>
+            <strong id="count-b">0</strong>
+          </article>
+          <article class="option-card option-c">
+            <p>Option C</p>
+            <strong id="count-c">0</strong>
+          </article>
+        </div>
+
+        <div class="metrics-row">
+          <article><p>Total Packets</p><strong id="total-packets">0</strong></article>
+          <article><p>Accepted</p><strong id="total-votes">0</strong></article>
+          <article><p>Duplicates</p><strong id="duplicate-votes">0</strong></article>
+          <article><p>Loss %</p><strong id="avg-loss">0.00</strong></article>
+        </div>
+
+        <h3>Live Vote Share</h3>
+        <div class="share-row"><span>Option A</span><div class="bar-track"><div id="bar-a" class="bar fill-a"></div></div><em id="pct-a">0.0%</em></div>
+        <div class="share-row"><span>Option B</span><div class="bar-track"><div id="bar-b" class="bar fill-b"></div></div><em id="pct-b">0.0%</em></div>
+        <div class="share-row"><span>Option C</span><div class="bar-track"><div id="bar-c" class="bar fill-c"></div></div><em id="pct-c">0.0%</em></div>
+
+        <div class="vote-actions">
+          <button class="btn vote-a" data-option="A">Vote A</button>
+          <button class="btn vote-b" data-option="B">Vote B</button>
+          <button class="btn vote-c" data-option="C">Vote C</button>
+        </div>
+        <p id="vote-feedback" class="feedback"></p>
+        <p id="timestamp" class="timestamp">Waiting for updates...</p>
+      </section>
+    </section>
+
+    <footer class="footer">Credits: R P Pranav | Deeksha | Nikitha V</footer>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
